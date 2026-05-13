@@ -1,0 +1,9 @@
+onestomanys/model/Department.class
+onestomanys/repository/DepartmentRepository.class
+onestomanys/service/UniversityService.class
+onestomanys/controller/UniversityController.class
+onestomanys/service/DepartmentService.class
+onestomanys/OnesToManyApplication.class
+onestomanys/controller/DepartmentController.class
+onestomanys/repository/UniversityRepository.class
+onestomanys/model/University.class
