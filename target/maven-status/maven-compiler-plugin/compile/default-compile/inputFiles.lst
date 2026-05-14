@@ -1,6 +1,7 @@
 /Users/prachi/Projects/OnesToManys/src/main/java/onestomanys/OnesToManyApplication.java
 /Users/prachi/Projects/OnesToManys/src/main/java/onestomanys/controller/DepartmentController.java
 /Users/prachi/Projects/OnesToManys/src/main/java/onestomanys/controller/UniversityController.java
+/Users/prachi/Projects/OnesToManys/src/main/java/onestomanys/dto/UniversityWithDepartments.java
 /Users/prachi/Projects/OnesToManys/src/main/java/onestomanys/model/Department.java
 /Users/prachi/Projects/OnesToManys/src/main/java/onestomanys/model/University.java
 /Users/prachi/Projects/OnesToManys/src/main/java/onestomanys/repository/DepartmentRepository.java

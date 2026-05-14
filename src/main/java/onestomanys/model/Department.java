@@ -2,60 +2,120 @@ package onestomanys.model;
 
 public class Department {
 
-    private int id;
-    private String name;
-    private String building;
-    private double budget;
-    private int universityId;
+    private Integer departmentId;
+    private String departmentName;
+    private String departmentCode;
+    private Integer universityId;
+    private String headOfDepartment;
+    private String departmentEmail;
+    private String departmentPhone;
+    private String buildingName;
+    private Integer totalFaculty;
+    private Integer totalStudents;
 
     public Department() {
     }
 
-    public Department(int id, String name, String building, double budget, int universityId) {
-        this.id = id;
-        this.name = name;
-        this.building = building;
-        this.budget = budget;
+    public Department(
+            Integer departmentId,
+            String departmentName,
+            String departmentCode,
+            Integer universityId,
+            String headOfDepartment,
+            String departmentEmail,
+            String departmentPhone,
+            String buildingName,
+            Integer totalFaculty,
+            Integer totalStudents) {
+        this.departmentId = departmentId;
+        this.departmentName = departmentName;
+        this.departmentCode = departmentCode;
         this.universityId = universityId;
+        this.headOfDepartment = headOfDepartment;
+        this.departmentEmail = departmentEmail;
+        this.departmentPhone = departmentPhone;
+        this.buildingName = buildingName;
+        this.totalFaculty = totalFaculty;
+        this.totalStudents = totalStudents;
     }
 
-    public int getId() {
-        return id;
+    public Integer getDepartmentId() {
+        return departmentId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setDepartmentId(Integer departmentId) {
+        this.departmentId = departmentId;
     }
 
-    public String getName() {
-        return name;
+    public String getDepartmentName() {
+        return departmentName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setDepartmentName(String departmentName) {
+        this.departmentName = departmentName;
     }
 
-    public String getBuilding() {
-        return building;
+    public String getDepartmentCode() {
+        return departmentCode;
     }
 
-    public void setBuilding(String building) {
-        this.building = building;
+    public void setDepartmentCode(String departmentCode) {
+        this.departmentCode = departmentCode;
     }
 
-    public double getBudget() {
-        return budget;
-    }
-
-    public void setBudget(double budget) {
-        this.budget = budget;
-    }
-
-    public int getUniversityId() {
+    public Integer getUniversityId() {
         return universityId;
     }
 
-    public void setUniversityId(int universityId) {
+    public void setUniversityId(Integer universityId) {
         this.universityId = universityId;
+    }
+
+    public String getHeadOfDepartment() {
+        return headOfDepartment;
+    }
+
+    public void setHeadOfDepartment(String headOfDepartment) {
+        this.headOfDepartment = headOfDepartment;
+    }
+
+    public String getDepartmentEmail() {
+        return departmentEmail;
+    }
+
+    public void setDepartmentEmail(String departmentEmail) {
+        this.departmentEmail = departmentEmail;
+    }
+
+    public String getDepartmentPhone() {
+        return departmentPhone;
+    }
+
+    public void setDepartmentPhone(String departmentPhone) {
+        this.departmentPhone = departmentPhone;
+    }
+
+    public String getBuildingName() {
+        return buildingName;
+    }
+
+    public void setBuildingName(String buildingName) {
+        this.buildingName = buildingName;
+    }
+
+    public Integer getTotalFaculty() {
+        return totalFaculty;
+    }
+
+    public void setTotalFaculty(Integer totalFaculty) {
+        this.totalFaculty = totalFaculty;
+    }
+
+    public Integer getTotalStudents() {
+        return totalStudents;
+    }
+
+    public void setTotalStudents(Integer totalStudents) {
+        this.totalStudents = totalStudents;
     }
 }

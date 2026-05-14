@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>University Department App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+            background-color: #f4f4f4;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        button {
+            padding: 10px 15px;
+            margin: 5px;
+            cursor: pointer;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .card {
+            background-color: white;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            box-shadow: 0 0 5px #ccc;
+        }
+
+        input {
+            padding: 8px;
+            margin: 5px;
+            width: 250px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>University Department Management</h1>
+
+    <button onclick="loadUniversities()">Show Universities</button>
+    <button onclick="loadDepartments()">Show Departments</button>
+    <button onclick="loadUniversityDetails()">Show University 1 Details</button>
+
+    <h2>Add University</h2>
+
+    <input id="universityCode" placeholder="University Code">
+    <input id="universityName" placeholder="University Name">
+    <input id="country" placeholder="Country">
+    <input id="stateProvince" placeholder="State">
+    <input id="city" placeholder="City">
+    <input id="address" placeholder="Address">
+    <input id="email" placeholder="Email">
+    <input id="phone" placeholder="Phone">
+    <input id="website" placeholder="Website">
+    <input id="establishedYear" placeholder="Established Year">
+    <input id="universityType" placeholder="University Type">
+
+    <br>
+    <button onclick="addUniversity()">Add University</button>
+
+    <h2>Output</h2>
+    <div id="output"></div>
+
+    <script>
+        const output = document.getElementById("output");
+
+        function showData(data) {
+            output.innerHTML = "";
+
+            if (Array.isArray(data)) {
+                data.forEach(item => {
+                    const div = document.createElement("div");
+                    div.className = "card";
+                    div.innerHTML = "<pre>" + JSON.stringify(item, null, 2) + "</pre>";
+                    output.appendChild(div);
+                });
+            } else {
+                const div = document.createElement("div");
+                div.className = "card";
+                div.innerHTML = "<pre>" + JSON.stringify(data, null, 2) + "</pre>";
+                output.appendChild(div);
+            }
+        }
+
+        function loadUniversities() {
+            fetch("/api/universities")
+                .then(response => response.json())
+                .then(data => showData(data))
+                .catch(error => {
+                    output.innerHTML = "Error loading universities";
+                    console.error(error);
+                });
+        }
+
+        function loadDepartments() {
+            fetch("/api/departments")
+                .then(response => response.json())
+                .then(data => showData(data))
+                .catch(error => {
+                    output.innerHTML = "Error loading departments";
+                    console.error(error);
+                });
+        }
+
+        function loadUniversityDetails() {
+            fetch("/api/universities/1/details")
+                .then(response => response.json())
+                .then(data => showData(data))
+                .catch(error => {
+                    output.innerHTML = "Error loading university details";
+                    console.error(error);
+                });
+        }
+
+        function addUniversity() {
+            const university = {
+                universityCode: document.getElementById("universityCode").value,
+                universityName: document.getElementById("universityName").value,
+                country: document.getElementById("country").value,
+                stateProvince: document.getElementById("stateProvince").value,
+                city: document.getElementById("city").value,
+                address: document.getElementById("address").value,
+                email: document.getElementById("email").value,
+                phone: document.getElementById("phone").value,
+                website: document.getElementById("website").value,
+                establishedYear: Number(document.getElementById("establishedYear").value),
+                universityType: document.getElementById("universityType").value
+            };
+
+            fetch("/api/universities", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(university)
+            })
+                .then(response => response.json())
+                .then(data => {
+                    showData(data);
+                    alert("University added successfully!");
+                })
+                .catch(error => {
+                    output.innerHTML = "Error adding university";
+                    console.error(error);
+                });
+        }
+    </script>
+
+</body>
+
+</html>
