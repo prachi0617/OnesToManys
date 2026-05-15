@@ -297,7 +297,8 @@
             })
                 .then(handleTextResponse)
                 .then(message => {
-                    showMessage(message, "success");
+                    showMessage("✅ University created successfully!", "success");
+                    alert("University created successfully!");
                     loadUniversities();
                 })
                 .catch(error => {
@@ -349,7 +350,8 @@
             })
                 .then(handleTextResponse)
                 .then(message => {
-                    showMessage(message, "success");
+                    showMessage("Department deleted successfully!", "success");
+                    alert("Department deleted successfully!");
                     loadUniversities();
                 })
                 .catch(error => {
@@ -380,7 +382,8 @@
             })
                 .then(handleTextResponse)
                 .then(message => {
-                    showMessage(message, "success");
+                    showMessage("✅ Department updated successfully!", "success");
+                    alert("Department updated successfully!");
                     loadDepartments();
                 })
                 .catch(error => {
