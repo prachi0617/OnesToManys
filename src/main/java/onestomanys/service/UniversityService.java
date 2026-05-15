@@ -35,7 +35,7 @@ public class UniversityService {
         return new UniversityWithDepartments(university, departments);
     }
 
-    public int createUniversity(University university) {
+    public University createUniversity(University university) {
         return universityRepository.save(university);
     }
 
@@ -44,6 +44,6 @@ public class UniversityService {
     }
 
     public void deleteUniversity(int id) {
-        universityRepository.delete(id);
+        universityRepository.deleteById(id);
     }
 }

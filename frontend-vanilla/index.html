@@ -2,7 +2,8 @@
 <html>
 
 <head>
-    <title>University Department App</title>
+    <title>University Department CRUD App</title>
+
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -12,6 +13,10 @@
 
         h1 {
             color: #333;
+        }
+
+        h2 {
+            margin-top: 30px;
         }
 
         button {
@@ -25,7 +30,37 @@
         }
 
         button:hover {
-            background-color: #0056b3;
+            opacity: 0.85;
+        }
+
+        .read-btn {
+            background-color: #17a2b8;
+        }
+
+        .create-btn {
+            background-color: #007bff;
+        }
+
+        .update-btn {
+            background-color: #28a745;
+        }
+
+        .delete-btn {
+            background-color: #dc3545;
+        }
+
+        .section {
+            background-color: white;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 5px #ccc;
+        }
+
+        input {
+            padding: 8px;
+            margin: 5px;
+            width: 270px;
         }
 
         .card {
@@ -36,10 +71,19 @@
             box-shadow: 0 0 5px #ccc;
         }
 
-        input {
-            padding: 8px;
-            margin: 5px;
-            width: 250px;
+        pre {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        .success {
+            color: green;
+            font-weight: bold;
+        }
+
+        .error {
+            color: red;
+            font-weight: bold;
         }
     </style>
 </head>
@@ -48,37 +92,121 @@
 
     <h1>University Department Management</h1>
 
-    <button onclick="loadUniversities()">Show Universities</button>
-    <button onclick="loadDepartments()">Show Departments</button>
-    <button onclick="loadUniversityDetails()">Show University 1 Details</button>
+    <div class="section">
+        <h2>Read</h2>
+        <button class="read-btn" onclick="loadUniversities()">Read Universities</button>
+        <button class="read-btn" onclick="loadDepartments()">Read Departments</button>
+        <button class="read-btn" onclick="loadUniversityDetails()">Read University 1 Details</button>
+    </div>
 
-    <h2>Add University</h2>
+    <div class="section">
+        <h2>Create University</h2>
 
-    <input id="universityCode" placeholder="University Code">
-    <input id="universityName" placeholder="University Name">
-    <input id="country" placeholder="Country">
-    <input id="stateProvince" placeholder="State">
-    <input id="city" placeholder="City">
-    <input id="address" placeholder="Address">
-    <input id="email" placeholder="Email">
-    <input id="phone" placeholder="Phone">
-    <input id="website" placeholder="Website">
-    <input id="establishedYear" placeholder="Established Year">
-    <input id="universityType" placeholder="University Type">
+        <input id="universityCode" placeholder="University Code">
+        <input id="universityName" placeholder="University Name">
+        <input id="country" placeholder="Country">
+        <input id="stateProvince" placeholder="State">
+        <input id="city" placeholder="City">
+        <input id="address" placeholder="Address">
+        <input id="email" placeholder="Email">
+        <input id="phone" placeholder="Phone">
+        <input id="website" placeholder="Website">
+        <input id="establishedYear" placeholder="Established Year">
+        <input id="universityType" placeholder="University Type">
 
-    <br>
-    <button onclick="addUniversity()">Add University</button>
+        <br>
+        <button class="create-btn" onclick="addUniversity()">Create University</button>
+    </div>
 
-    <h2>Output</h2>
-    <div id="output"></div>
+    <div class="section">
+        <h2>Update University</h2>
+
+        <input id="updateUniversityId" placeholder="University ID to Update">
+        <input id="updateUniversityCode" placeholder="University Code">
+        <input id="updateUniversityName" placeholder="University Name">
+        <input id="updateCountry" placeholder="Country">
+        <input id="updateStateProvince" placeholder="State">
+        <input id="updateCity" placeholder="City">
+        <input id="updateAddress" placeholder="Address">
+        <input id="updateEmail" placeholder="Email">
+        <input id="updatePhone" placeholder="Phone">
+        <input id="updateWebsite" placeholder="Website">
+        <input id="updateEstablishedYear" placeholder="Established Year">
+        <input id="updateUniversityType" placeholder="University Type">
+
+        <br>
+        <button class="update-btn" onclick="updateUniversity()">Update University</button>
+    </div>
+
+    <div class="section">
+        <h2>Delete University</h2>
+
+        <input id="deleteUniversityId" placeholder="University ID to Delete">
+        <br>
+        <button class="delete-btn" onclick="deleteUniversity()">Delete University</button>
+    </div>
+
+    <div class="section">
+        <h2>Create Department</h2>
+
+        <input id="departmentName" placeholder="Department Name">
+        <input id="departmentCode" placeholder="Department Code">
+        <input id="departmentUniversityId" placeholder="University ID">
+        <input id="headOfDepartment" placeholder="Head of Department">
+        <input id="departmentEmail" placeholder="Department Email">
+        <input id="departmentPhone" placeholder="Department Phone">
+        <input id="buildingName" placeholder="Building Name">
+        <input id="totalFaculty" placeholder="Total Faculty">
+        <input id="totalStudents" placeholder="Total Students">
+
+        <br>
+        <button class="create-btn" onclick="addDepartment()">Create Department</button>
+    </div>
+
+    <div class="section">
+        <h2>Update Department</h2>
+
+        <input id="updateDepartmentId" placeholder="Department ID to Update">
+        <input id="updateDepartmentName" placeholder="Department Name">
+        <input id="updateDepartmentCode" placeholder="Department Code">
+        <input id="updateDepartmentUniversityId" placeholder="University ID">
+        <input id="updateHeadOfDepartment" placeholder="Head of Department">
+        <input id="updateDepartmentEmail" placeholder="Department Email">
+        <input id="updateDepartmentPhone" placeholder="Department Phone">
+        <input id="updateBuildingName" placeholder="Building Name">
+        <input id="updateTotalFaculty" placeholder="Total Faculty">
+        <input id="updateTotalStudents" placeholder="Total Students">
+
+        <br>
+        <button class="update-btn" onclick="updateDepartment()">Update Department</button>
+    </div>
+
+    <div class="section">
+        <h2>Delete Department</h2>
+
+        <input id="deleteDepartmentId" placeholder="Department ID to Delete">
+        <br>
+        <button class="delete-btn" onclick="deleteDepartment()">Delete Department</button>
+    </div>
+
+    <div class="section">
+        <h2>Output</h2>
+        <div id="output"></div>
+    </div>
 
     <script>
+        const API_URL = "http://localhost:8080";
         const output = document.getElementById("output");
 
         function showData(data) {
             output.innerHTML = "";
 
             if (Array.isArray(data)) {
+                if (data.length === 0) {
+                    output.innerHTML = "<p>No data found.</p>";
+                    return;
+                }
+
                 data.forEach(item => {
                     const div = document.createElement("div");
                     div.className = "card";
@@ -93,32 +221,54 @@
             }
         }
 
+        function showMessage(message, type) {
+            output.innerHTML = `<p class="${type}">${message}</p>`;
+        }
+
+        function handleTextResponse(response) {
+            if (!response.ok) {
+                return response.text().then(text => {
+                    throw new Error(text || "Request failed");
+                });
+            }
+            return response.text();
+        }
+
+        function handleJsonResponse(response) {
+            if (!response.ok) {
+                return response.text().then(text => {
+                    throw new Error(text || "Request failed");
+                });
+            }
+            return response.json();
+        }
+
         function loadUniversities() {
-            fetch("/api/universities")
-                .then(response => response.json())
+            fetch(`${API_URL}/api/universities`)
+                .then(handleJsonResponse)
                 .then(data => showData(data))
                 .catch(error => {
-                    output.innerHTML = "Error loading universities";
+                    showMessage("Error loading universities: " + error.message, "error");
                     console.error(error);
                 });
         }
 
         function loadDepartments() {
-            fetch("/api/departments")
-                .then(response => response.json())
+            fetch(`${API_URL}/api/departments`)
+                .then(handleJsonResponse)
                 .then(data => showData(data))
                 .catch(error => {
-                    output.innerHTML = "Error loading departments";
+                    showMessage("Error loading departments: " + error.message, "error");
                     console.error(error);
                 });
         }
 
         function loadUniversityDetails() {
-            fetch("/api/universities/1/details")
-                .then(response => response.json())
+            fetch(`${API_URL}/api/universities/1/details`)
+                .then(handleJsonResponse)
                 .then(data => showData(data))
                 .catch(error => {
-                    output.innerHTML = "Error loading university details";
+                    showMessage("Error loading university details: " + error.message, "error");
                     console.error(error);
                 });
         }
@@ -138,20 +288,153 @@
                 universityType: document.getElementById("universityType").value
             };
 
-            fetch("/api/universities", {
+            fetch(`${API_URL}/api/universities`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify(university)
             })
-                .then(response => response.json())
-                .then(data => {
-                    showData(data);
-                    alert("University added successfully!");
+                .then(handleTextResponse)
+                .then(message => {
+                    showMessage(message, "success");
+                    loadUniversities();
                 })
                 .catch(error => {
-                    output.innerHTML = "Error adding university";
+                    showMessage("Error adding university: " + error.message, "error");
+                    console.error(error);
+                });
+        }
+
+        function updateUniversity() {
+            const id = document.getElementById("updateUniversityId").value;
+
+            const university = {
+                universityCode: document.getElementById("updateUniversityCode").value,
+                universityName: document.getElementById("updateUniversityName").value,
+                country: document.getElementById("updateCountry").value,
+                stateProvince: document.getElementById("updateStateProvince").value,
+                city: document.getElementById("updateCity").value,
+                address: document.getElementById("updateAddress").value,
+                email: document.getElementById("updateEmail").value,
+                phone: document.getElementById("updatePhone").value,
+                website: document.getElementById("updateWebsite").value,
+                establishedYear: Number(document.getElementById("updateEstablishedYear").value),
+                universityType: document.getElementById("updateUniversityType").value
+            };
+
+            fetch(`${API_URL}/api/universities/${id}`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(university)
+            })
+                .then(handleTextResponse)
+                .then(message => {
+                    showMessage(message, "success");
+                    loadUniversities();
+                })
+                .catch(error => {
+                    showMessage("Error updating university: " + error.message, "error");
+                    console.error(error);
+                });
+        }
+
+        function deleteUniversity() {
+            const id = document.getElementById("deleteUniversityId").value;
+
+            fetch(`${API_URL}/api/universities/${id}`, {
+                method: "DELETE"
+            })
+                .then(handleTextResponse)
+                .then(message => {
+                    showMessage(message, "success");
+                    loadUniversities();
+                })
+                .catch(error => {
+                    showMessage("Error deleting university: " + error.message, "error");
+                    console.error(error);
+                });
+        }
+
+        function addDepartment() {
+            const department = {
+                departmentName: document.getElementById("departmentName").value,
+                departmentCode: document.getElementById("departmentCode").value,
+                universityId: Number(document.getElementById("departmentUniversityId").value),
+                headOfDepartment: document.getElementById("headOfDepartment").value,
+                departmentEmail: document.getElementById("departmentEmail").value,
+                departmentPhone: document.getElementById("departmentPhone").value,
+                buildingName: document.getElementById("buildingName").value,
+                totalFaculty: Number(document.getElementById("totalFaculty").value),
+                totalStudents: Number(document.getElementById("totalStudents").value)
+            };
+
+            fetch(`${API_URL}/api/departments`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(department)
+            })
+                .then(handleTextResponse)
+                .then(message => {
+                    showMessage(message, "success");
+                    loadDepartments();
+                })
+                .catch(error => {
+                    showMessage("Error adding department: " + error.message, "error");
+                    console.error(error);
+                });
+        }
+
+        function updateDepartment() {
+            const id = document.getElementById("updateDepartmentId").value;
+
+            const department = {
+                departmentName: document.getElementById("updateDepartmentName").value,
+                departmentCode: document.getElementById("updateDepartmentCode").value,
+                universityId: Number(document.getElementById("updateDepartmentUniversityId").value),
+                headOfDepartment: document.getElementById("updateHeadOfDepartment").value,
+                departmentEmail: document.getElementById("updateDepartmentEmail").value,
+                departmentPhone: document.getElementById("updateDepartmentPhone").value,
+                buildingName: document.getElementById("updateBuildingName").value,
+                totalFaculty: Number(document.getElementById("updateTotalFaculty").value),
+                totalStudents: Number(document.getElementById("updateTotalStudents").value)
+            };
+
+            fetch(`${API_URL}/api/departments/${id}`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(department)
+            })
+                .then(handleTextResponse)
+                .then(message => {
+                    showMessage(message, "success");
+                    loadDepartments();
+                })
+                .catch(error => {
+                    showMessage("Error updating department: " + error.message, "error");
+                    console.error(error);
+                });
+        }
+
+        function deleteDepartment() {
+            const id = document.getElementById("deleteDepartmentId").value;
+
+            fetch(`${API_URL}/api/departments/${id}`, {
+                method: "DELETE"
+            })
+                .then(handleTextResponse)
+                .then(message => {
+                    showMessage(message, "success");
+                    loadDepartments();
+                })
+                .catch(error => {
+                    showMessage("Error deleting department: " + error.message, "error");
                     console.error(error);
                 });
         }
